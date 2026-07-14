@@ -125,12 +125,3 @@ Irregular pattern pieces (sleeves, collars, body panels) are passed to the nesti
    - For every shift, it checks if the shape intersects with any already-placed shapes (padded with a safe nesting margin buffer using `pyclipper`).
    - If no intersection occurs, the shape shifts further, allowing curved parts (like neck collar curves) to tightly lock together, significantly cutting fabric waste compared to manual bounding-box layouts.
 4. Finally, the engine calculates the resulting fabric roll height, computes utilization percentages, and returns optimized coordinates to the UI visualizer.
-
----
-
-## 👥 Authors & Team
-Documented research and prototype engineered by Team Pattern Optima:
-- **E. Shivaram Reddy** (AI & Full Stack Architect)
-- **CH. Jaswanth Chowdary** (Nesting Algorithm Developer)
-- **A. Bala Abhishai Reddy** (Geometry Specialist)
-- **G. Tharun** (UI/UX & Frontend Lead)
