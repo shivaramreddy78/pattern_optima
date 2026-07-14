@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: pattern_optima_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=pattern_user
+      - POSTGRES_PASSWORD=pattern_pass
+      - POSTGRES_DB=pattern_optima
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pattern_optima_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=PATTERN OPTIMA
+      - DATABASE_URL=postgresql://pattern_user:pattern_pass@db:5432/pattern_optima
+      - SECRET_KEY=supersecretkey_for_pattern_optima_ai_2026
+    depends_on:
+      - db
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pattern_optima_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  postgres_data:
