@@ -16,3 +16,32 @@ build/
 
 # macOS
 .DS_Store
+
+# Node.js
+node_modules/
+frontend/node_modules/
+
+# Next.js
+.next/
+frontend/.next/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+frontend/node_modules/
+
+# Next.js
+.next/
+frontend/.next/
+
+# Python
+__pycache__/
+*.py[cod]
